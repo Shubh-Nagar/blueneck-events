@@ -15,8 +15,8 @@ export default function Home() {
       <FeaturedProjects />
       <Journey />
       <Clients />
-      <Voices />
       <Expertise />
+      <Voices />
       <Culture />
       <ContactCta />
     </Page>

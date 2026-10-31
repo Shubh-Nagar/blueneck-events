@@ -2,6 +2,7 @@ import { useEffect, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import PageLoader from './PageLoader';
 
 /** Site chrome. Resets scroll on navigation (keeps hash links working). */
 export default function Layout({ children }: { children: ReactNode }) {
@@ -20,6 +21,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       >
         Skip to content
       </a>
+      <PageLoader />
       <Header />
       <main id="main">{children}</main>
       <Footer />
