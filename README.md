@@ -25,6 +25,7 @@ These were not in the company profile, so they are left empty and hidden in the 
 | --- | --- |
 | Office address, email, phone, WhatsApp, Instagram, LinkedIn | `src/data/site.ts` → `contact` |
 | Client testimonials (the home page shows labelled "case notes" until you add some) | `src/data/site.ts` → `testimonials` |
+| Job openings and the careers inbox | `src/data/site.ts` → `careers` (the page shows an open-application note while `openings` is empty) |
 | Contact form delivery | set `VITE_FORM_ENDPOINT` (see `.env.example`), or set `contact.email` to use a mailto fallback |
 | Names for two client emblems without a legible name (`client-18.png`, `client-39.png`) | `src/data/images.generated.json` → `_clients` |
 
@@ -41,6 +42,7 @@ cities on some case studies, e.g. Pravasi Bharatiya Divas 2023, USICON 2023) in 
 | `/work` | Filterable masonry of all 29 productions (`/work?type=sports` etc. is shareable) |
 | `/work/:slug` | Case study: cover, facts, story, scope, gallery with lightbox, next/related |
 | `/contact` | Enquiry form with validation, contact details, map |
+| `/careers` | Why join, teams we hire for, open positions, hiring steps, application form |
 
 ## Structure
 

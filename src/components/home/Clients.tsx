@@ -4,17 +4,7 @@ import { motion } from 'framer-motion';
 import { clients, scale } from '../../data/site';
 import Heading, { ArrowLink } from '../ui/Heading';
 import CountUp from '../ui/CountUp';
-
-/**
- * The logo's sunburst, as fractions of its box: sky petals inside, mist and ice outside
- * (the logo's own light blues, in its order).
- */
-const PETAL_RINGS = [
-  { n: 12, r: 0.228, size: 0.04, offset: 0.5, color: '#75A6D8', opacity: 0.55 },
-  { n: 12, r: 0.3, size: 0.092, offset: 0, color: '#89BBE5', opacity: 0.45 },
-  { n: 24, r: 0.4, size: 0.056, offset: 0.5, color: '#BBD9F2', opacity: 0.7 },
-  { n: 24, r: 0.468, size: 0.036, offset: 0, color: '#BBD9F2', opacity: 0.5 },
-];
+import PetalBurst from '../ui/PetalBurst';
 
 /** Client logos in two drifting rows, then the scale figures counting up. */
 export default function Clients() {
@@ -25,36 +15,7 @@ export default function Clients() {
   return (
     <section className="relative z-10 overflow-hidden bg-white py-20 md:py-32" aria-labelledby="clients-title">
       {/* The logo's petal burst in its light blues, turning slowly and continuously behind the heading. */}
-      {/* A CSS spin rather than a JS loop: it runs on the compositor and never stalls. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-48 -top-16 h-[46rem] w-[46rem] animate-[spin_90s_linear_infinite] opacity-[0.38] md:-left-40"
-      >
-        <span className="absolute left-1/2 top-1/2 h-[36.8%] w-[36.8%] -translate-x-1/2 -translate-y-1/2 rounded-full border-[1.5px] border-ice bg-ice/15" />
-        {PETAL_RINGS.flatMap((ring, ri) =>
-          Array.from({ length: ring.n }, (_, k) => {
-            const deg = ((k + ring.offset) / ring.n) * 360 - 90;
-            const a = (deg * Math.PI) / 180;
-            return (
-              <span
-                key={`${ri}-${k}`}
-                className="absolute block"
-                style={{
-                  width: `${ring.size * 100}%`,
-                  height: `${ring.size * 100}%`,
-                  left: `${(0.5 + Math.cos(a) * ring.r - ring.size / 2) * 100}%`,
-                  top: `${(0.5 + Math.sin(a) * ring.r - ring.size / 2) * 100}%`,
-                  backgroundColor: ring.color,
-                  opacity: ring.opacity,
-                  borderRadius: '22%',
-                  // Each petal points outward from the centre, as in the logo.
-                  transform: `rotate(${deg + 45}deg)`,
-                }}
-              />
-            );
-          }),
-        )}
-      </div>
+      <PetalBurst className="absolute -left-48 -top-16 h-[46rem] w-[46rem] opacity-[0.38] md:-left-40" />
 
       <div className="shell relative">
         <Heading id="clients-title" lead="The names" accent="behind our stages">

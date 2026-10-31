@@ -10,6 +10,7 @@ const nav = [
   { to: '/about', label: 'Our story' },
   { to: '/expertise', label: 'Expertise' },
   { to: '/work', label: 'Work' },
+  { to: '/careers', label: 'Careers' },
 ];
 
 /** Is a dark cover (marked `data-dark-cover` by the page) still under the bar? */

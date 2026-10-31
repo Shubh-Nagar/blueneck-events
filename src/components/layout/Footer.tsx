@@ -69,6 +69,7 @@ export default function Footer() {
                   ['/about', 'Our story'],
                   ['/expertise', 'Expertise'],
                   ['/work', 'Work'],
+                  ['/careers', 'Careers'],
                   ['/contact', 'Contact'],
                 ].map(([to, label]) => (
                   <li key={to}>

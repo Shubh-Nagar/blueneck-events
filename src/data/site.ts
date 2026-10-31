@@ -193,3 +193,56 @@ export const clients: Client[] = (images as unknown as { _clients: Client[] })._
  */
 export type Testimonial = { quote: string; name: string; role: string; caseSlug?: string };
 export const testimonials: Testimonial[] = [];
+
+/**
+ * Careers page.
+ * TODO: the company profile lists no vacancies or hiring email. Add live openings to
+ * `openings` (the page shows an "open application" note while it is empty) and set
+ * `email` to the inbox that should receive applications (falls back to contact.email).
+ */
+export type Opening = {
+  title: string;
+  /** Must match one of the `teams` names below, so "Apply" can preselect it. */
+  team: string;
+  location: string;
+  type: string; // e.g. 'Full time', 'Internship', 'Per event'
+  summary: string;
+};
+
+export const careers = {
+  email: '', // e.g. 'careers@blueneckevents.com'
+  openings: [] as Opening[],
+  /** The disciplines behind every production, described from the work in the profile. */
+  teams: [
+    {
+      name: 'Event planning and project management',
+      summary:
+        'Own a brief from first call to final bow: timelines, budgets, run-of-show and the hundred moving parts in between.',
+    },
+    {
+      name: 'Production and stage',
+      summary:
+        'Stages, sets, sound, light and LED for launches, concerts and award nights, built to schedule and torn down without a trace.',
+    },
+    {
+      name: 'Creative and design',
+      summary:
+        'Stage design, event identities, route branding and on-ground collateral that make each production look like itself.',
+    },
+    {
+      name: 'Client servicing',
+      summary:
+        'Be the calm voice for corporates, government bodies and private hosts, and turn what they want into what the team can build.',
+    },
+    {
+      name: 'Guest logistics and hospitality',
+      summary:
+        'Travel, stays, registrations and VIP movement for multi-venue itineraries, conferences and delegations.',
+    },
+    {
+      name: 'Operations and on-ground crew',
+      summary:
+        'Vendors, venues, permissions and crowd flow. The people who make sure 25,000 guests get in, and out, on time.',
+    },
+  ],
+};

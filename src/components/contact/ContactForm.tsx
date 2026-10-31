@@ -1,4 +1,4 @@
-import { useState, type FormEvent, type InputHTMLAttributes, type ReactNode } from 'react';
+import { useState, type FormEvent, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { contact, services } from '../../data/site';
 import { ease } from '../../lib/motion';
@@ -169,12 +169,12 @@ export default function ContactForm({ initialType = '' }: { initialType?: string
   );
 }
 
-const inputCls = (err: boolean) =>
+export const inputCls = (err: boolean) =>
   `mt-2 block w-full rounded-xl border-0 bg-[#F3F6FA] px-4 py-3.5 text-body-sm text-ink placeholder:text-ink/35 ring-1 ring-inset transition-[box-shadow,background-color] focus:bg-white focus:outline-none focus:ring-2 ${
     err ? 'ring-[#B42318]' : 'ring-transparent focus:ring-cobalt'
   }`;
 
-function Label({ htmlFor, children, optional }: { htmlFor: string; children: ReactNode; optional?: boolean }) {
+export function Label({ htmlFor, children, optional }: { htmlFor: string; children: ReactNode; optional?: boolean }) {
   return (
     <label htmlFor={htmlFor} className="text-[0.8rem] font-semibold text-ink/75">
       {children}
@@ -183,7 +183,7 @@ function Label({ htmlFor, children, optional }: { htmlFor: string; children: Rea
   );
 }
 
-function ErrorText({ id, text }: { id: string; text?: string }) {
+export function ErrorText({ id, text }: { id: string; text?: string }) {
   return text ? (
     <p id={id} className="mt-2 text-[0.8rem] text-[#B42318]">
       {text}
@@ -191,7 +191,7 @@ function ErrorText({ id, text }: { id: string; text?: string }) {
   ) : null;
 }
 
-function Field({
+export function Field({
   label,
   name,
   error,
@@ -216,23 +216,32 @@ function Field({
   );
 }
 
-function Select({
+export function Select({
   label,
   name,
   children,
-  defaultValue,
+  error,
+  ...rest
 }: {
   label: string;
   name: string;
   children: ReactNode;
-  defaultValue?: string;
-}) {
+  error?: string;
+} & SelectHTMLAttributes<HTMLSelectElement>) {
   return (
     <div>
       <Label htmlFor={name}>{label}</Label>
-      <select id={name} name={name} defaultValue={defaultValue} className={inputCls(false) + ' cursor-pointer'}>
+      <select
+        id={name}
+        name={name}
+        aria-invalid={!!error}
+        aria-describedby={error ? `${name}-err` : undefined}
+        className={inputCls(!!error) + ' cursor-pointer'}
+        {...rest}
+      >
         {children}
       </select>
+      <ErrorText id={`${name}-err`} text={error} />
     </div>
   );
 }

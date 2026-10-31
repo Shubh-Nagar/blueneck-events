@@ -10,6 +10,7 @@ const Expertise = lazy(() => import('./pages/Expertise'));
 const Work = lazy(() => import('./pages/Work'));
 const CaseStudy = lazy(() => import('./pages/CaseStudy'));
 const Contact = lazy(() => import('./pages/Contact'));
+const Careers = lazy(() => import('./pages/Careers'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
             <Route path="/work" element={<Work />} />
             <Route path="/work/:slug" element={<CaseStudy />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/careers" element={<Careers />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
