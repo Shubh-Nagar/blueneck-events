@@ -9,6 +9,7 @@ const About = lazy(() => import('./pages/About'));
 const Expertise = lazy(() => import('./pages/Expertise'));
 const Work = lazy(() => import('./pages/Work'));
 const CaseStudy = lazy(() => import('./pages/CaseStudy'));
+const MedicalConferences = lazy(() => import('./pages/MedicalConferences'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Careers = lazy(() => import('./pages/Careers'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/expertise" element={<Expertise />} />
             <Route path="/work" element={<Work />} />
+            <Route path="/work/medical-conferences" element={<MedicalConferences />} />
             <Route path="/work/:slug" element={<CaseStudy />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/careers" element={<Careers />} />

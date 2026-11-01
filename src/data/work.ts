@@ -20,6 +20,36 @@ export const categories: { id: Category; label: string }[] = [
   { id: 'auditions', label: 'Auditions' },
 ];
 
+/**
+ * The "Work" dropdown in the header: one entry per kind of event. Most open the
+ * filtered gallery; medical conferences have their own page, and weddings (no
+ * photographed case studies yet) open their Expertise tab.
+ */
+export type WorkIcon =
+  | 'medical'
+  | 'weddings'
+  | 'corporate'
+  | 'music'
+  | 'sports'
+  | 'government'
+  | 'activations'
+  | 'exhibitions'
+  | 'conferences'
+  | 'auditions';
+
+export const workMenu: { to: string; label: string; icon: WorkIcon; note: string }[] = [
+  { to: '/work/medical-conferences', label: 'Medical conferences', icon: 'medical', note: '17 congresses across 15 specialties' },
+  { to: '/expertise#weddings', label: 'Weddings', icon: 'weddings', note: '100+ luxury weddings curated' },
+  { to: '/work?type=corporate', label: 'Corporate events', icon: 'corporate', note: 'Dealer meets, jubilees, award nights' },
+  { to: '/work?type=entertainment', label: 'Concerts and live shows', icon: 'music', note: 'Music festivals, fashion weeks, artists' },
+  { to: '/work?type=sports', label: 'Sports events', icon: 'sports', note: 'League launches and player auctions' },
+  { to: '/work?type=government', label: 'Government and civic', icon: 'government', note: 'CM-led ceremonies, city programmes' },
+  { to: '/work?type=activations', label: 'Brand activations', icon: 'activations', note: 'Store launches and mall promotions' },
+  { to: '/work?type=exhibitions', label: 'Exhibitions and trade fairs', icon: 'exhibitions', note: 'Up to 300+ exhibitors, 80,000 visitors' },
+  { to: '/work?type=conferences', label: 'Conclaves and conferences', icon: 'conferences', note: 'Industry and professional summits' },
+  { to: '/work?type=auditions', label: 'TV auditions', icon: 'auditions', note: '21 cities in 40 days' },
+];
+
 export type CaseStudy = {
   slug: string;
   title: string;

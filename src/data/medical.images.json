@@ -1,0 +1,332 @@
+{
+ "cover": {
+  "src": "/images/medical/cover.webp",
+  "w": 2000,
+  "h": 1125,
+  "tone": "#5a5160"
+ },
+ "wzusicon-2023-arch": {
+  "src": "/images/medical/wzusicon-2023-arch.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#5e4456"
+ },
+ "wzusicon-2023-hall": {
+  "src": "/images/medical/wzusicon-2023-hall.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#675447"
+ },
+ "wzusicon-2023-palace": {
+  "src": "/images/medical/wzusicon-2023-palace.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#8b898a"
+ },
+ "wzusicon-2023-trade": {
+  "src": "/images/medical/wzusicon-2023-trade.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#78758d"
+ },
+ "wzusicon-2023-gala": {
+  "src": "/images/medical/wzusicon-2023-gala.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#0f0b15"
+ },
+ "wzusicon-2023-dining": {
+  "src": "/images/medical/wzusicon-2023-dining.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#b3a991"
+ },
+ "wzusicon-2023-outing": {
+  "src": "/images/medical/wzusicon-2023-outing.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#7d7a8e"
+ },
+ "soncon-2024-hall": {
+  "src": "/images/medical/soncon-2024-hall.webp",
+  "w": 1400,
+  "h": 789,
+  "tone": "#9e8482"
+ },
+ "soncon-2024-arch": {
+  "src": "/images/medical/soncon-2024-arch.webp",
+  "w": 888,
+  "h": 750,
+  "tone": "#a29198"
+ },
+ "soncon-2024-eposter": {
+  "src": "/images/medical/soncon-2024-eposter.webp",
+  "w": 888,
+  "h": 750,
+  "tone": "#533824"
+ },
+ "soncon-2024-lamp": {
+  "src": "/images/medical/soncon-2024-lamp.webp",
+  "w": 888,
+  "h": 762,
+  "tone": "#715d59"
+ },
+ "neocon-2024-arch": {
+  "src": "/images/medical/neocon-2024-arch.webp",
+  "w": 891,
+  "h": 748,
+  "tone": "#5d584d"
+ },
+ "neocon-2024-stage": {
+  "src": "/images/medical/neocon-2024-stage.webp",
+  "w": 890,
+  "h": 752,
+  "tone": "#6e656c"
+ },
+ "neocon-2024-trade": {
+  "src": "/images/medical/neocon-2024-trade.webp",
+  "w": 891,
+  "h": 749,
+  "tone": "#a19394"
+ },
+ "neocon-2024-registration": {
+  "src": "/images/medical/neocon-2024-registration.webp",
+  "w": 887,
+  "h": 750,
+  "tone": "#b99da5"
+ },
+ "atvsicon-2024-hall": {
+  "src": "/images/medical/atvsicon-2024-hall.webp",
+  "w": 889,
+  "h": 749,
+  "tone": "#8f8895"
+ },
+ "arsicon-2024-kits": {
+  "src": "/images/medical/arsicon-2024-kits.webp",
+  "w": 1000,
+  "h": 667,
+  "tone": "#605853"
+ },
+ "arsicon-2024-stage": {
+  "src": "/images/medical/arsicon-2024-stage.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#886252"
+ },
+ "respicon-2022-venue": {
+  "src": "/images/medical/respicon-2022-venue.webp",
+  "w": 1400,
+  "h": 934,
+  "tone": "#98968c"
+ },
+ "respicon-2022-registration": {
+  "src": "/images/medical/respicon-2022-registration.webp",
+  "w": 1000,
+  "h": 736,
+  "tone": "#b0a9a5"
+ },
+ "respicon-2022-stage": {
+  "src": "/images/medical/respicon-2022-stage.webp",
+  "w": 1000,
+  "h": 612,
+  "tone": "#ad9987"
+ },
+ "sono-summit-2022-arch": {
+  "src": "/images/medical/sono-summit-2022-arch.webp",
+  "w": 1000,
+  "h": 668,
+  "tone": "#756769"
+ },
+ "sono-summit-2022-trade": {
+  "src": "/images/medical/sono-summit-2022-trade.webp",
+  "w": 1000,
+  "h": 562,
+  "tone": "#5a4f4a"
+ },
+ "ips-gsb-2022-hall": {
+  "src": "/images/medical/ips-gsb-2022-hall.webp",
+  "w": 1400,
+  "h": 788,
+  "tone": "#304653"
+ },
+ "nsicon-2025-arch": {
+  "src": "/images/medical/nsicon-2025-arch.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#5f6f7c"
+ },
+ "nsicon-2025-avenue": {
+  "src": "/images/medical/nsicon-2025-avenue.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#647076"
+ },
+ "nsicon-2025-welcome": {
+  "src": "/images/medical/nsicon-2025-welcome.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#767b83"
+ },
+ "nsicon-2025-registration": {
+  "src": "/images/medical/nsicon-2025-registration.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#887259"
+ },
+ "nsicon-2025-plenary": {
+  "src": "/images/medical/nsicon-2025-plenary.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#4a4349"
+ },
+ "nsicon-2025-lamp": {
+  "src": "/images/medical/nsicon-2025-lamp.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#7a7178"
+ },
+ "nsicon-2025-inaugural": {
+  "src": "/images/medical/nsicon-2025-inaugural.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#959fb3"
+ },
+ "nsicon-2025-delegates": {
+  "src": "/images/medical/nsicon-2025-delegates.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#403637"
+ },
+ "nsicon-2025-trade": {
+  "src": "/images/medical/nsicon-2025-trade.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#8f7e72"
+ },
+ "nsicon-2025-stall": {
+  "src": "/images/medical/nsicon-2025-stall.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#6f687b"
+ },
+ "nsicon-2025-hall": {
+  "src": "/images/medical/nsicon-2025-hall.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#755d4b"
+ },
+ "nsicon-2025-faculty": {
+  "src": "/images/medical/nsicon-2025-faculty.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#56504d"
+ },
+ "wzusicon-2026-title": {
+  "src": "/images/medical/wzusicon-2026-title.webp",
+  "w": 1400,
+  "h": 931,
+  "tone": "#a39ab6"
+ },
+ "wzusicon-2026-lamp": {
+  "src": "/images/medical/wzusicon-2026-lamp.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#746670"
+ },
+ "wzusicon-2026-plenary": {
+  "src": "/images/medical/wzusicon-2026-plenary.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#9b8386"
+ },
+ "wzusicon-2026-hall-a": {
+  "src": "/images/medical/wzusicon-2026-hall-a.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#7c7880"
+ },
+ "wzusicon-2026-session": {
+  "src": "/images/medical/wzusicon-2026-session.webp",
+  "w": 1400,
+  "h": 931,
+  "tone": "#976556"
+ },
+ "wzusicon-2026-trade": {
+  "src": "/images/medical/wzusicon-2026-trade.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#767f98"
+ },
+ "wzusicon-2026-lawns": {
+  "src": "/images/medical/wzusicon-2026-lawns.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#99a58b"
+ },
+ "wzusicon-2026-beach-stage": {
+  "src": "/images/medical/wzusicon-2026-beach-stage.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#8a917c"
+ },
+ "wzusicon-2026-sundowner": {
+  "src": "/images/medical/wzusicon-2026-sundowner.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#38371e"
+ },
+ "wzusicon-2026-bar": {
+  "src": "/images/medical/wzusicon-2026-bar.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#554236"
+ },
+ "wzusicon-2026-carnival": {
+  "src": "/images/medical/wzusicon-2026-carnival.webp",
+  "w": 1400,
+  "h": 958,
+  "tone": "#998882"
+ },
+ "wzusicon-2026-photo-booth": {
+  "src": "/images/medical/wzusicon-2026-photo-booth.webp",
+  "w": 1400,
+  "h": 933,
+  "tone": "#766b5e"
+ },
+ "wzusicon-2023-memory-lane": {
+  "src": "/images/medical/wzusicon-2023-memory-lane.webp",
+  "w": 1333,
+  "h": 1038,
+  "tone": "#694b33"
+ },
+ "wzusicon-2023-exhibition": {
+  "src": "/images/medical/wzusicon-2023-exhibition.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#837582"
+ },
+ "wzusicon-2023-spouses": {
+  "src": "/images/medical/wzusicon-2023-spouses.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#7a757b"
+ },
+ "wzusicon-2023-lawn-stage": {
+  "src": "/images/medical/wzusicon-2023-lawn-stage.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#3b3f59"
+ },
+ "wzusicon-2023-javed-ali": {
+  "src": "/images/medical/wzusicon-2023-javed-ali.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#463a73"
+ },
+ "wzusicon-2023-crowd": {
+  "src": "/images/medical/wzusicon-2023-crowd.webp",
+  "w": 1400,
+  "h": 787,
+  "tone": "#4f4c6c"
+ }
+}
