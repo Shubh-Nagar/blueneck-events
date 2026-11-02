@@ -94,6 +94,7 @@ export default function Expertise() {
       <PageHero
         lead="Every format,"
         accent="one team"
+        image="/images/team/crew.jpg"
         after={
           <LayoutGroup>
             <div

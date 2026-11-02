@@ -11,16 +11,25 @@ export default function PageHero({
   accent,
   children,
   after,
+  image,
 }: {
   lead: ReactNode;
   accent: ReactNode;
   children?: ReactNode;
   /** Optional content under the title (tabs, stats…), still inside the wash. */
   after?: ReactNode;
+  /** Optional photograph behind the title, softened by the wash so the text stays legible. */
+  image?: string;
 }) {
   const reduce = useReducedMotion();
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-ice/40 via-[#F5F9FD] to-white pb-14 pt-36 sm:pb-20 sm:pt-44">
+      {image && (
+        <div aria-hidden className="absolute inset-0">
+          <img src={image} alt="" fetchPriority="high" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/80 to-white" />
+        </div>
+      )}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <motion.span
           className="absolute -left-24 top-24 block h-72 w-72"

@@ -55,6 +55,7 @@ export default function Careers() {
       <PageHero
         lead="Build the stage"
         accent="with us"
+        image="/images/team/office.jpg"
         after={
           <motion.div
             className="mt-10 flex flex-wrap justify-center gap-3"

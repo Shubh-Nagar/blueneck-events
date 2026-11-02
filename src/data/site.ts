@@ -43,8 +43,11 @@ export const contact = {
   whatsapp: '919926000545',
   addressLines: ['Indore, Madhya Pradesh'], // TODO: replace with the full office address
   mapQuery: 'Indore, Madhya Pradesh', // used for the embedded map
-  instagram: '',
-  linkedin: '',
+  // Full profile URLs. Each one shows as an icon in the footer once filled in.
+  instagram: 'https://www.instagram.com/blueneckevents/',
+  linkedin: 'https://in.linkedin.com/company/blueneck-events-pvt-ltd',
+  facebook: 'https://www.facebook.com/blueneckevents/',
+  youtube: '',
 };
 
 /** "What we do" from the profile, plus weddings and activations from the logo line. */
@@ -184,6 +187,9 @@ export const scale = [
 ];
 
 export const officeImage: Img = team._office[0];
+
+/** The whole crew, on the field at Holkar Stadium, Indore. */
+export const crewImage: Img = { src: '/images/team/crew.jpg', w: 1280, h: 848, tone: '#3d5a2e' };
 
 export type Client = { src: string; name: string; w: number; h: number };
 export const clients: Client[] = (images as unknown as { _clients: Client[] })._clients;

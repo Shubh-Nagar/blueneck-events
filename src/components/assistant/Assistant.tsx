@@ -9,7 +9,7 @@ import { whatsappHref } from '../../lib/assistant/knowledge';
 
 /**
  * The site assistant: a launcher fixed to the bottom-right corner and a chat panel.
- * Opens by itself once per page load on the home page (after the intro curtain lifts).
+ * Opens by itself once per page load on the home page, when the visitor scrolls past the hero film.
  *
  * Answers stream from /api/chat (Claude) when it is deployed; otherwise, or if it
  * fails, the built-in matcher answers from the site's own data.
@@ -17,7 +17,7 @@ import { whatsappHref } from '../../lib/assistant/knowledge';
 type Msg = { id: number; role: 'user' | 'assistant'; text: string; chips?: string[]; pending?: boolean };
 
 const ENDPOINT = (import.meta.env.VITE_ASSISTANT_ENDPOINT as string | undefined) ?? '/api/chat';
-const AUTO_OPEN_DELAY = 1200;
+const AUTO_OPEN_DELAY = 600;
 
 let nextId = 1;
 const welcome = (): Msg => ({
@@ -46,14 +46,27 @@ export default function Assistant() {
   const openRef = useRef(open);
   openRef.current = open;
 
-  // Arriving on (or refreshing) the home page: open once the loader has lifted.
+  // On the home page: open once the visitor has scrolled past the hero film.
   useEffect(() => {
     if (autoOpened.current || pathname !== '/' || !revealed) return;
-    const id = window.setTimeout(() => {
-      autoOpened.current = true;
-      setOpen(true);
-    }, AUTO_OPEN_DELAY);
-    return () => window.clearTimeout(id);
+    let timer = 0;
+    const check = () => {
+      const hero = document.getElementById('hero');
+      // The hero's bottom edge has left the top of the viewport: the film is behind them.
+      if (!hero || hero.getBoundingClientRect().bottom > 0) return;
+      window.removeEventListener('scroll', check);
+      timer = window.setTimeout(() => {
+        if (autoOpened.current) return;
+        autoOpened.current = true;
+        setOpen(true);
+      }, AUTO_OPEN_DELAY);
+    };
+    window.addEventListener('scroll', check, { passive: true });
+    check(); // already past it (e.g. a refresh that restores the scroll position)
+    return () => {
+      window.removeEventListener('scroll', check);
+      window.clearTimeout(timer);
+    };
   }, [pathname, revealed]);
   // Only the first arrival counts; leaving home first means no auto-open later this visit.
   useEffect(() => {
@@ -146,6 +159,8 @@ export default function Assistant() {
   };
 
   const toggle = () => {
+    // The visitor found it on their own: don't pop it open on them later.
+    autoOpened.current = true;
     setOpen((o) => {
       // Focus the input when the visitor opens it themselves (never on auto-open).
       if (!o) window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 350);

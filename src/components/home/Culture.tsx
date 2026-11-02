@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { officeImage } from '../../data/site';
+import { crewImage } from '../../data/site';
 import { ArrowLink } from '../ui/Heading';
 import { ease } from '../../lib/motion';
 
@@ -24,11 +24,11 @@ export default function Culture() {
       >
         <motion.div className="absolute inset-x-0 -top-[15%] h-[130%]" style={{ y: reduce ? 0 : y }}>
           <img
-            src={officeImage.src}
-            alt="The Blueneck Events studio in Indore"
+            src={crewImage.src}
+            alt="The Blueneck Events crew on the field at Holkar Stadium, Indore"
             loading="lazy"
             className="h-full w-full object-cover"
-            style={{ backgroundColor: officeImage.tone }}
+            style={{ backgroundColor: crewImage.tone }}
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-tr from-ink/90 via-ink/45 to-transparent" />
