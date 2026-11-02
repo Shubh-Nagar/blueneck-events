@@ -1,5 +1,5 @@
 /**
- * POST /api/chat — the assistant's AI brain (Vercel Edge Function).
+ * POST /api/chat — the assistant's AI brain (Vercel Node.js Function).
  *
  * Needs ANTHROPIC_API_KEY in the Vercel project's environment variables. Without it
  * (or on hosts that don't run /api, like Hostinger), this returns 503/404 and the
@@ -9,11 +9,12 @@
  * Reply: the assistant's text, streamed as plain UTF-8.
  */
 import Anthropic from '@anthropic-ai/sdk';
-import { buildKnowledge } from '../src/lib/assistant/knowledge';
+import { buildKnowledge } from '../src/lib/assistant/knowledge.js';
 
-export const config = { runtime: 'edge' };
+// Runs on Vercel's Node.js runtime (the Anthropic SDK pulls in modules the Edge runtime can't bundle).
+// Allow time for a full streamed reply.
+export const maxDuration = 60;
 
-// Vercel exposes project env vars on process.env in edge functions too.
 declare const process: { env: Record<string, string | undefined> };
 
 const MODEL = 'claude-opus-5-5';
@@ -54,8 +55,8 @@ function readTurns(body: unknown): Turn[] | null {
   return turns.length && turns[turns.length - 1].role === 'user' ? turns : null;
 }
 
-export default async function handler(req: Request): Promise<Response> {
-  if (req.method !== 'POST') return new Response('Method not allowed', { status: 405 });
+// Web-standard handler: Vercel answers other methods with 405 automatically.
+export async function POST(req: Request): Promise<Response> {
   if (!process.env.ANTHROPIC_API_KEY) return new Response('Assistant AI not configured', { status: 503 });
 
   let turns: Turn[] | null = null;

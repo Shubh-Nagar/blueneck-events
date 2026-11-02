@@ -2,7 +2,7 @@
  * Company-wide content. Everything here is taken from the Blueneck corporate
  * profile PDF unless marked TODO. Edit this file to update copy site-wide.
  */
-import images from './images.generated.json';
+import images from './images.generated.json' with { type: 'json' };
 
 export type Img = { src: string; w: number; h: number; tone: string };
 

@@ -3,8 +3,8 @@
  * Images live in /public/images/work/<slug>/ and are listed in images.generated.json
  * (first image = cover).
  */
-import images from './images.generated.json';
-import type { Img } from './site';
+import images from './images.generated.json' with { type: 'json' };
+import type { Img } from './site.js';
 
 export type Category =
   'government' | 'corporate' | 'entertainment' | 'activations' | 'auditions' | 'sports' | 'exhibitions' | 'conferences';

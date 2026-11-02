@@ -3,9 +3,9 @@
  * Edit src/data/*.ts and the assistant updates with it. No DOM access here: this
  * module is also bundled into the /api/chat edge function.
  */
-import { company, contact, services, directors, scale, careers, clients } from '../../data/site';
-import { cases, categories, categoryLabel } from '../../data/work';
-import { medicalStats, medicalServices, portfolio, bodies, commitments, medicalContact } from '../../data/medical';
+import { company, contact, services, directors, scale, careers, clients } from '../../data/site.js';
+import { cases, categories, categoryLabel } from '../../data/work.js';
+import { medicalStats, medicalServices, portfolio, bodies, commitments, medicalContact } from '../../data/medical.js';
 
 /** Best contact we have: the site-wide one if filled in, else the director's from the medical deck. */
 export const enquiry = {

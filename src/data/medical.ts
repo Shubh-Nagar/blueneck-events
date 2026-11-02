@@ -3,8 +3,8 @@
  * "Medical Conferences" pitch deck; photographs come from the BEPL medical
  * conference expertise deck and live in /public/images/medical/.
  */
-import photos from './medical.images.json';
-import type { Img } from './site';
+import photos from './medical.images.json' with { type: 'json' };
+import type { Img } from './site.js';
 
 export const medicalImages = photos as Record<keyof typeof photos, Img>;
 const p = medicalImages;
