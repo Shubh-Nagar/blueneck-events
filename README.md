@@ -82,6 +82,28 @@ src/
 - **Motion**: one load sequence per page (headline lines rise, burst tiles fly out from the BN disc); everything else responds to the visitor (hover, filter, open). `prefers-reduced-motion` is respected.
 - **Performance**: routes are code-split, images are lazy-loaded WebP with intrinsic sizes and colour placeholders, framer-motion and React are in separate long-cache chunks.
 
+## Website assistant
+
+A chat widget sits in the bottom-right corner of every page and opens by itself when a visitor
+lands on (or refreshes) the home page, once the intro curtain lifts.
+
+- `src/components/assistant/Assistant.tsx`: launcher and chat panel.
+- `src/lib/assistant/local.ts`: built-in answers, matched against the site's data (services,
+  case studies, medical portfolio, directors, contact, careers). Always works, no server needed.
+- `src/lib/assistant/knowledge.ts`: turns `src/data/*` into the assistant's knowledge, so
+  editing the data updates the assistant too.
+- `api/chat.ts`: optional AI answers with Claude (`claude-opus-5-5`), as a Vercel Edge Function.
+  Set `ANTHROPIC_API_KEY` in Vercel's environment variables to turn it on. If the endpoint is
+  missing or fails, the widget falls back to the built-in answers.
+
+**Teaching it new questions.** `scripts/assistant-test.ts` holds ~180 real-style visitor
+questions (English, Hindi and Hinglish, typos, multi-turn follow-ups) with the answer each should
+get. When a visitor's question is answered badly, add it there, adjust the patterns in
+`src/lib/assistant/local.ts`, and run `npm run test:assistant` until everything passes.
+
+Contact details in the assistant use `contact` in `src/data/site.ts` when filled in; until then
+they use the director contact from the medical deck (`medicalContact` in `src/data/medical.ts`).
+
 ## Deploy
 
 - **Vercel**: import the repo; `vercel.json` handles SPA routing.

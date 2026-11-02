@@ -37,7 +37,10 @@ export const heroVideo = {
 export const contact = {
   email: '', // e.g. 'hello@blueneckevents.com'
   phone: '', // e.g. '+91 98xxx xxxxx'
-  whatsapp: '', // digits only with country code, e.g. '9198xxxxxxxx'
+  // Digits only, with country code. Used by the floating WhatsApp button, the footer, the
+  // contact page and the assistant. TODO: confirm this is the right WhatsApp number (it is
+  // director Radhika Pawar's number from the medical-conferences deck).
+  whatsapp: '919926000545',
   addressLines: ['Indore, Madhya Pradesh'], // TODO: replace with the full office address
   mapQuery: 'Indore, Madhya Pradesh', // used for the embedded map
   instagram: '',

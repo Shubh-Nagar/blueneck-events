@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import PageLoader from './PageLoader';
+import Assistant from '../assistant/Assistant';
 
 /** Site chrome. Resets scroll on navigation (keeps hash links working). */
 export default function Layout({ children }: { children: ReactNode }) {
@@ -25,6 +26,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <Header />
       <main id="main">{children}</main>
       <Footer />
+      <Assistant />
     </>
   );
 }

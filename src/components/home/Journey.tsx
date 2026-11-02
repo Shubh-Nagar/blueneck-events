@@ -1,21 +1,39 @@
-import { useRef } from 'react';
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { company } from '../../data/site';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useInView, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { company, type Img } from '../../data/site';
 import { caseBySlug } from '../../data/work';
 import Heading, { ArrowLink } from '../ui/Heading';
 import { ease } from '../../lib/motion';
 
-/** Who we are. Two photographs overlap and slide past each other as the page scrolls. */
+const covers = (slugs: string[]) => slugs.map((s) => caseBySlug(s)?.images[0]).filter((i): i is Img => !!i);
+
+// Each frame cycles through its own set of event photographs (case-study covers).
+const BACK = covers(['modi-at-20', 'plastpack-2025', 'credai-conclave', 'mayor-shapath-grahan-samaroh', 'usicon-west-zone']);
+const FRONT = covers([
+  'bhaskar-utsav',
+  'prabandhotsav-2023',
+  'vigour-biotech-dealers-meet',
+  'inspire-apple-store-launch-indore',
+  'mp-premier-league-2025',
+]);
+
+/** How long each photo holds, and how long the cross-fade takes (ms). */
+const HOLD = 3000;
+const FADE = 1000;
+
+/**
+ * Who we are. Two photographs overlap and slide past each other as the page scrolls,
+ * each cross-fading through a set of event photos. The frames change half a beat apart
+ * so they never swap together.
+ */
 export default function Journey() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
+  const inView = useInView(ref, { amount: 0.2 });
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
   const p = useSpring(scrollYProgress, { stiffness: 45, damping: 22 });
   const backY = useTransform(p, [0, 1], ['-15%', '15%']);
   const frontY = useTransform(p, [0, 1], ['12%', '-12%']);
-
-  const back = caseBySlug('modi-at-20')!.images[0];
-  const front = caseBySlug('bhaskar-utsav')!.images[0];
 
   return (
     <section
@@ -51,25 +69,13 @@ export default function Journey() {
             className="absolute left-0 top-0 w-[68%] overflow-hidden rounded-2xl shadow-[0_30px_60px_-20px_rgba(8,22,41,0.35)] ring-4 ring-white"
             style={{ y: reduce ? 0 : backY }}
           >
-            <img
-              src={back.src}
-              alt=""
-              loading="lazy"
-              className="aspect-[4/3] w-full object-cover"
-              style={{ backgroundColor: back.tone }}
-            />
+            <Crossfade images={BACK} active={inView} offset={0} zoom={!reduce} />
           </motion.div>
           <motion.div
             className="absolute bottom-0 right-0 w-[56%] overflow-hidden rounded-2xl shadow-[0_40px_80px_-20px_rgba(8,22,41,0.45)] ring-4 ring-white"
             style={{ y: reduce ? 0 : frontY }}
           >
-            <img
-              src={front.src}
-              alt=""
-              loading="lazy"
-              className="aspect-[4/3] w-full object-cover"
-              style={{ backgroundColor: front.tone }}
-            />
+            <Crossfade images={FRONT} active={inView} offset={HOLD / 2} zoom={!reduce} />
           </motion.div>
           <motion.span
             aria-hidden
@@ -80,5 +86,56 @@ export default function Journey() {
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * A 4:3 frame that cross-fades through `images`. All photos are stacked and only the
+ * opacity changes, so there is never a blank frame between them. The incoming photo also
+ * settles from a slight zoom. Cycling only runs while `active` and the tab is visible.
+ */
+function Crossfade({ images, active, offset, zoom }: { images: Img[]; active: boolean; offset: number; zoom: boolean }) {
+  // `prev` stays fully opaque underneath while the new photo fades in over it, so the
+  // frame never dips to the background colour mid-fade.
+  const [{ index, prev }, setState] = useState({ index: 0, prev: -1 });
+
+  useEffect(() => {
+    if (!active || images.length < 2) return;
+    let timer: number | undefined;
+    const tick = () => {
+      if (!document.hidden) setState(({ index: i }) => ({ index: (i + 1) % images.length, prev: i }));
+      timer = window.setTimeout(tick, HOLD);
+    };
+    timer = window.setTimeout(tick, HOLD + offset);
+    return () => window.clearTimeout(timer);
+  }, [active, images.length, offset]);
+
+  return (
+    <div className="relative aspect-[4/3] w-full" style={{ backgroundColor: images[0]?.tone }}>
+      {images.map((img, i) => {
+        const on = i === index;
+        const under = i === prev;
+        return (
+          <img
+            key={img.src}
+            src={img.src}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              backgroundColor: img.tone,
+              opacity: on || under ? 1 : 0,
+              transform: zoom ? `scale(${on || under ? 1 : 1.06})` : undefined,
+              // Only the incoming photo animates; the others switch instantly while hidden.
+              transition: on
+                ? `opacity ${FADE}ms ease-in-out, transform ${HOLD + FADE}ms cubic-bezier(0.22, 1, 0.36, 1)`
+                : 'none',
+              zIndex: on ? 2 : under ? 1 : 0,
+            }}
+          />
+        );
+      })}
+    </div>
   );
 }
